@@ -7,10 +7,47 @@
 \usepackage{caption}
 \usepackage{microtype}
 \usepackage[all]{nowidow}
+\usepackage[style=authoryear,backend=biber,maxcitenames=2]{biblatex}
+
+%%%%%% Abbildunggen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \graphicspath{{./figures/}}
-\captionsetup{width=0.8\linewidth}
-\setkeys{Gin}{width=0.8\linewidth} % default figure parameters
+\captionsetup{width=0.8\linewidth} % Abbildungen sind 80% der Textbreite
+\setkeys{Gin}{width=0.8\linewidth} % ... und Bildunterschriften auch
+
+%%%%%% Zitate und Quellenverweise %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Es gibt mehrere Befehle, mit denen Zitate in ein Latex-Dokument einfügen
+% werden können. Angenommen, es gibt einen 'newton1833' Eintrag in der .bib
+% Datei und ich möchte ... , dann kann das folgende Befehl verwendet werden.
+%
+%     ... indirekt zitieren:
+%         \vglcite{80f}{newton1833} => (vgl. Newton 1687, S. 80f)
+%
+%     ... eine Textpassage aus dem Ausgangstext übernehmen:
+%         \verbcite{150}{newton1833} => (Newton 1687, S. 150)
+%
+%     ... eine Bildquelle einfügen:
+%         \verbcite{150}{newton1833} => (Newton 1687, S. 150)
+%
+%     ... auf das gesamte Werk verweisen:
+%         \autocite{newton1833} => (Newton 1687)
+%
+%     ... nur den Titel der Arbeit haben:
+%         \citetitle{newton1833} => Philosophiæ Naturalis Principia Mathematica
+%
+
+\bibliography{bibliography.bib}
+\newcommand{\vglcite}[2]{\autocite[vgl.][S. #1]{#2}}
+\newcommand{\verbcite}[2]{\autocite[][S. #1]{#2}}
+
+% Quellenverweise sollen nicht mit einem Punkt beendet werden.
+\renewcommand*{\finentrypunct}{}
+% Abkürzung o.D. (ohne Datum) wird für Webseiten verwendet, für die kein Datum
+% in der .bib Datei eingetragen wurde.
+\DeclareLabeldate{\field{date}\field{eventdate}\field{origdate}\field{year}\literal{nodate}}
+% Abbildungsverzeichnis soll nicht extra eingerückt werden.
+\makeatletter\renewcommand{\l@figure}{\@dottedtocline{1}{0em}{2em}}\makeatother
 
 \begin{document}
 
@@ -29,10 +66,13 @@ Sed non lorem dolor. Proin ultricies purus sit amet justo vestibulum, ac vehicul
 
 \section{Dignissimos dicta magnam\label{sec:kapitel_mit_abbildung}}
 
+In seinem Werk \citetitle{newton1833} formuliert der Autor \citeauthor{newton1833} die drei Grundgesetze der Bewegung. Außerdem wird in diesem Buch das Gesetz der Schwerkraft hergeleitet, das Anziehungskräfte zwischen allen Körpern beschreibt.
+
 Fusce tristique volutpat elementum. Aenean elementum nibh ex, et consectetur augue ultricies tristique. Ut hendrerit blandit orci, ut varius dolor vehicula in. Proin malesuada sagittis quam, quis iaculis nibh venenatis sit amet. Vivamus interdum eros eu egestas varius. Duis ut massa pretium, luctus metus id, ultricies sapien. Fusce volutpat risus arcu, non vehicula velit fermentum vel. Curabitur in porta dolor, ac viverra metus. Morbi sit amet velit vitae libero bibendum pretium. Integer pellentesque, dui vel finibus posuere, turpis urna placerat odio, in fringilla elit nisi eu lacus. Etiam tempus mattis augue vitae eleifend. Mauris cursus magna arcu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor enim a varius iaculis.
 
-% TODO
-Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, “and what is the use of a book,” thought Alice “without pictures or conversations?”
+\begin{displayquote}
+    If Carroll was on drugs, the Alice books would probably be a series of rambling, disconnected, surrealist scenarios. But the Alice books are far from random. They contain some very intricate logic problems and very clever puns (not to mention Alice’s journey in “Through the Looking-Glass”, which follows the moves of a chess game), that could only be the work of a sharp mind in full control of its abilities. \autocite{rooy_faq}
+\end{displayquote}
 
 Labore incidunt aliquam tenetur et. Dolorem dolor et et est. Et sit unde aliquid eligendi quia consectetur aliquam totam. Culpa minima error est perferendis voluptatem nulla est molestias nesciunt. Illum minima hic laudantium optio dolor omnis. Est quaerat quaerat delectus natus quos laboriosam. Libero iure perferendis itaque. Repellat in quaerat inventore sed nobis et et. Fugiat deleniti fuga sit beatae. Sit illum odit autem nisi quaerat et aut. Enim sint provident expedita est blanditiis tempore minima sapiente. Quo saepe aspernatur tempore.
 
@@ -45,15 +85,39 @@ Nulla nec nibh molestie, faucibus augue at, tristique ipsum. Vestibulum dapibus 
 \begin{figure}
     \centering
     \includegraphics{alice}
-    \caption{Alice bei der Teegesellschaft} % TODO Zitat
+    \caption{Alice bei einer Teegesellschaft im Wunderland \verbcite{33}{carroll1865}}
     \label{fig:teaparty}
 \end{figure}
 
-Die Abbildung \ref{fig:teaparty} zeigt Alice bei einer Teeparty mit dem Märzhasen und dem verrückten Hutmacher. Die beiden Gastgeber stützen ihre Ellbogen auf ein Murmeltier, das fest eingeschlafen zwischen den beiden liegt. Die Protagonistin Alice bemerkt, dass diese Lage unbequem für das Tier sein müsse.
+Die Abbildung \ref{fig:teaparty} zeigt Alice bei einer Teeparty mit dem Märzhasen und dem verrückten Hutmacher. Die beiden Gastgeber stützen ihre Ellbogen auf ein Murmeltier, das fest eingeschlafen zwischen den beiden liegt. Die Protagonistin Alice bemerkt, dass diese Lage unbequem für das Tier sein müsse \vglcite{33f}{carroll1865}.
 
 \subsection{Rerum dolores inventore}
 
 Magnam consequatur cum quis ut et quos quo molestiae. Reiciendis quia et magnam fugit eos aperiam ut velit ea. Repudiandae animi tempore. Qui aut ut ex vero voluptatibus. Non illum voluptatem enim et. Vitae quisquam in quo molestiae voluptatem incidunt. Qui nostrum rerum fugiat nihil soluta repudiandae commodi. Sunt doloribus omnis deleniti aperiam suscipit. Perspiciatis qui aspernatur sed fuga dolores qui sed. Ipsam excepturi quis est possimus dolores temporibus optio illum. Voluptatem odio aut modi voluptate nihil ipsam. Nesciunt sequi tempore quos laudantium blanditiis ipsam totam labore. Dolores ab reiciendis aut pariatur. Et quo non nihil quia et cum ullam vitae voluptas. Distinctio architecto quis quasi necessitatibus ea.
+
+Cumque deleniti ut et ex nobis. Consectetur ut voluptas fuga deleniti rerum itaque praesentium libero facilis. Consequuntur ut exercitationem nobis. Iusto tempora voluptatem architecto quidem voluptatum repellat. Quisquam laboriosam adipisci in ex. Odio ad rerum dolores autem quo eius autem sequi. Accusamus dolores sunt ad provident ab fugit vel natus. Quas laborum animi et quibusdam itaque et omnis. Consequuntur labore ut in nisi non sed ratione. Consequatur et quis. Ut dolores assumenda aliquam sint nulla ipsam quia voluptas. Possimus in et dicta.
+
+\begin{itemize}
+    \item Alice
+    \item Cheshire Cat
+    \item White Rabbit
+    \item Queen of Hearts
+\end{itemize}
+
+Dolore voluptatibus dolores incidunt commodi id. Est fuga non sapiente similique est. Totam suscipit animi dolor voluptate qui amet consequatur. Deleniti expedita perspiciatis quo quos ut est culpa sint. Quos omnis modi perferendis aut deleniti sint cum autem. Recusandae consequuntur et ut natus quaerat vitae qui magnam.Accusamus et sapiente laborum eum repudiandae facere id. Ipsam eum modi unde tempore enim qui omnis consequatur. Aut eum perferendis. Aliquid est repellat quia architecto vel minima quibusdam.
+
+\section{Explicabo consequature}
+
+\begin{figure}
+    \centering
+    \includegraphics{cheshire_cat}
+    \caption{Große Grinsekatze auf einem Baum \verbcite{31}{carroll1865}}
+    \label{fig:fat_cat}
+\end{figure}
+
+Die Abbildung \ref{fig:fat_cat} zeigt eine große und etwas übergewichtete Katze, die auf einem Baum sitzt und mit Alice spricht. Die Katze grinst, weil sie mit ihrem Leben im Wunderland vollständig zufrieden ist. Außerdem meint die Grinsekatze, dass alle Lebewesen, die im Wunderland leben und später Alice begegnen werden, verrückt sind. Die Abbildung der Grinsekatze stammt aus dem Buch \citetitle{carroll1865}, das im Jahr \citeyear{carroll1865} von \citeauthor{carroll1865} geschrieben wurde \autocite{carroll1865}.
+
+Integer non purus tellus. Nulla nec tellus dictum, lacinia magna quis, luctus velit. Sed elementum tristique pulvinar. Proin congue tincidunt dapibus. Nam nisl lacus, cursus nec lobortis eu, pretium in leo. Proin ultricies diam sit amet lorem sodales sagittis. Fusce molestie congue mi at lacinia. Nunc faucibus id urna et volutpat. Aenean tempus sit amet lacus a luctus. Fusce sit amet scelerisque odio. Sed et tortor sollicitudin, blandit turpis non, viverra ipsum. Donec varius mollis dui eget commodo. Sed quis nisl pharetra, vestibulum felis dictum, iaculis felis. In id justo mauris. Proin nec enim ullamcorper, convallis felis vel, sagittis mi. Fusce ut dui lacus.
 
 \section{Zusammenfassung}
 
@@ -62,5 +126,14 @@ Im Kapitel \ref{sec:kapitel_mit_abbildung} wurden viele Absätze geschrieben, di
 Curabitur eget augue imperdiet, pellentesque justo et, viverra lacus. Sed accumsan felis at maximus tempus. Duis ut elementum nibh, facilisis rutrum ex. Mauris malesuada, ipsum et aliquam vulputate, purus quam pretium elit, quis molestie nisl erat in tellus. In ultrices rutrum hendrerit. Fusce consectetur lacinia felis, eu laoreet leo scelerisque quis. Nulla sodales volutpat nulla, in faucibus massa ullamcorper id. In tempor ligula vitae feugiat vulputate. Sed fringilla posuere mauris, et tincidunt ipsum tempus malesuada. Sed semper pellentesque dictum. Curabitur urna sapien, gravida eu dapibus quis, gravida eu lacus. Mauris posuere at arcu vitae commodo.
 
 Integer a venenatis ante, nec venenatis lacus. Quisque euismod lacinia massa eget ullamcorper. Praesent ut est faucibus, accumsan nibh ac, ornare nibh. Fusce efficitur tincidunt tellus, sed finibus ipsum. Nam rutrum sem non elit gravida suscipit. Nullam hendrerit purus vitae est euismod, quis tristique augue dictum. Donec ultrices aliquet eros, imperdiet faucibus tellus euismod ut. Aenean posuere laoreet eros a fringilla. Vivamus et vehicula orci, vel ultricies ante.
+
+% Literaturverzeichnis
+\clearpage
+\printbibliography[heading=bibintoc]
+
+% Abbildungsverzeichnis
+\clearpage
+\listoffigures
+\addcontentsline{toc}{section}{\listfigurename}
 
 \end{document}
