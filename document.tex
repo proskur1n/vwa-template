@@ -8,6 +8,18 @@
 \usepackage{microtype}
 \usepackage[all]{nowidow}
 \usepackage[style=authoryear,backend=biber,maxcitenames=2]{biblatex}
+\usepackage{fontspec}
+
+%%%%%% Textformatierung %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setmainfont[
+    Path = {fonts/},
+    ItalicFont = {EBGaramond-Italic},
+    BoldFont   = {Charter-Bold},
+]{EBGaramond}
+
+\setlength{\parskip}{0.5em} % Abstand zwischen Absätzen
+\setlength{\parindent}{0cm} % Absätze sollen nicht eingerückt werden
 
 %%%%%% Abbildunggen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -28,7 +40,7 @@
 %         \verbcite{150}{newton1833} => (Newton 1687, S. 150)
 %
 %     ... eine Bildquelle einfügen:
-%         \verbcite{150}{newton1833} => (Newton 1687, S. 150)
+%         \verbcite{95}{newton1833} => (Newton 1687, S. 95)
 %
 %     ... auf das gesamte Werk verweisen:
 %         \autocite{newton1833} => (Newton 1687)
