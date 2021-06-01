@@ -21,6 +21,9 @@
 \setlength{\parskip}{0.5em} % Abstand zwischen Absätzen
 \setlength{\parindent}{0cm} % Absätze sollen nicht eingerückt werden
 
+% Seitenränder
+\geometry{bindingoffset=1cm, left=3cm, right=3cm}
+
 %%%%%% Abbildunggen %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \graphicspath{{./figures/}}
@@ -55,11 +58,24 @@
 
 % Quellenverweise sollen nicht mit einem Punkt beendet werden.
 \renewcommand*{\finentrypunct}{}
-% Abkürzung o.D. (ohne Datum) wird für Webseiten verwendet, für die kein Datum
-% in der .bib Datei eingetragen wurde.
-\DeclareLabeldate{\field{date}\field{eventdate}\field{origdate}\field{year}\literal{nodate}}
+
+% Abkürzung o.D. (ohne Datum) soll für Webseiten verwendet werden, für die kein
+% Datum in der .bib Datei eingetragen wurde.
+\DeclareLabeldate{
+    \field{date}\field{eventdate}\field{origdate}\field{year}\literal{nodate}
+}
+
+% Seitenränder von Blockzitaten
+\renewcommand{\quote}{
+    \list{}{\rightmargin=2em\leftmargin=2em\topsep=0em}\item\relax\small
+}
+
 % Abbildungsverzeichnis soll nicht extra eingerückt werden.
-\makeatletter\renewcommand{\l@figure}{\@dottedtocline{1}{0em}{2em}}\makeatother
+\makeatletter
+\renewcommand{\l@figure}{\@dottedtocline{1}{0em}{2em}}
+\makeatother
+
+%%%%%% Ende der Prä­am­bel %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -82,9 +98,9 @@ In seinem Werk \citetitle{newton1833} formuliert der Autor \citeauthor{newton183
 
 Fusce tristique volutpat elementum. Aenean elementum nibh ex, et consectetur augue ultricies tristique. Ut hendrerit blandit orci, ut varius dolor vehicula in. Proin malesuada sagittis quam, quis iaculis nibh venenatis sit amet. Vivamus interdum eros eu egestas varius. Duis ut massa pretium, luctus metus id, ultricies sapien. Fusce volutpat risus arcu, non vehicula velit fermentum vel. Curabitur in porta dolor, ac viverra metus. Morbi sit amet velit vitae libero bibendum pretium. Integer pellentesque, dui vel finibus posuere, turpis urna placerat odio, in fringilla elit nisi eu lacus. Etiam tempus mattis augue vitae eleifend. Mauris cursus magna arcu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tempor enim a varius iaculis.
 
-\begin{displayquote}
+\begin{quote}
     If Carroll was on drugs, the Alice books would probably be a series of rambling, disconnected, surrealist scenarios. But the Alice books are far from random. They contain some very intricate logic problems and very clever puns (not to mention Alice’s journey in “Through the Looking-Glass”, which follows the moves of a chess game), that could only be the work of a sharp mind in full control of its abilities. \autocite{rooy_faq}
-\end{displayquote}
+\end{quote}
 
 Labore incidunt aliquam tenetur et. Dolorem dolor et et est. Et sit unde aliquid eligendi quia consectetur aliquam totam. Culpa minima error est perferendis voluptatem nulla est molestias nesciunt. Illum minima hic laudantium optio dolor omnis. Est quaerat quaerat delectus natus quos laboriosam. Libero iure perferendis itaque. Repellat in quaerat inventore sed nobis et et. Fugiat deleniti fuga sit beatae. Sit illum odit autem nisi quaerat et aut. Enim sint provident expedita est blanditiis tempore minima sapiente. Quo saepe aspernatur tempore.
 
@@ -147,5 +163,7 @@ Integer a venenatis ante, nec venenatis lacus. Quisque euismod lacinia massa ege
 \clearpage
 \listoffigures
 \addcontentsline{toc}{section}{\listfigurename}
+
+% TODO
 
 \end{document}
