@@ -79,9 +79,49 @@
 
 \begin{document}
 
+\begin{titlepage}
+    \centering
+    \Large
+    \newgeometry{bindingoffset=1cm}
+
+    \vspace*{\fill}
+    
+    {\Huge\textbf{Halbschatten Rendering mit\\ Shadow Mapping}\par}
+    \vspace{0.5cm}
+    {\LARGE\textbf{Tiefenpuffer-Filterung basierte Methoden}}
+    
+    \vspace{3cm}
+    
+    Vorwissenschaftliche Arbeit verfasst von\par
+    \textbf{Max Mustermann}\par
+    
+    \vspace{1.5cm}
+    
+    Klasse: 8B\par
+    Schuljahr: 2020/21\par
+    
+    \vspace{1.5cm}
+    
+    Betreuer: \textbf{Prof. Mag. Thomas Mustermann}\par
+    
+    \vspace{3cm}
+    
+    Bundesrealgymnasium Wien 4\par
+    Waltergasse 7\par
+    1040 Wien
+    
+    \vspace*{\fill}
+\end{titlepage}
+
 \pagestyle{empty}
-\input{bits/titlepage}
-\input{bits/abstract}
+\setcounter{page}{2}
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+Quae consequatur autem. Consequatur et natus neque ea dolorem magni. Dolorum culpa voluptas. Quis distinctio qui magni debitis maiores. Officia quia necessitatibus at tenetur voluptatibus tempora quidem sed adipisci. Veniam modi laudantium quod dolore et ex deserunt molestiae ut. Omnis saepe totam eius esse accusamus ullam. Enim ut officiis nesciunt et explicabo aut reiciendis possimus. Veritatis totam iure voluptates autem eos quia reprehenderit aperiam sit. Quia quo accusamus nostrum perspiciatis. Occaecati incidunt nemo quae et sed. Asperiores consequatur quia tempora. Officiis tempore consequatur voluptas optio eos deserunt.
+
+\newpage
+\pagestyle{empty}
 \tableofcontents
 \newpage
 \pagestyle{plain}
@@ -164,6 +204,14 @@ Integer a venenatis ante, nec venenatis lacus. Quisque euismod lacinia massa ege
 \listoffigures
 \addcontentsline{toc}{section}{\listfigurename}
 
-% TODO
+\clearpage
+\thispagestyle{empty}
+\section*{Selbstständigkeitserklärung}
+
+Ich, Max Mustermann, erkläre hiermit eidesstattlich, dass ich diese vorwissenschaftliche Arbeit selbstständig und ohne Hilfe Dritter verfasst habe. Insbesondere versichere ich, dass ich alle wörtlichen und sinngemäßen Übernahmen aus anderen Werken als Zitate kenntlich gemacht und alle verwendeten Quellen angegeben habe.
+
+\vspace{0.5cm}
+\makebox[5cm]{\hrulefill} \hfill\makebox[5cm]{\hrulefill}
+\par\makebox[5cm][l]{Ort, Datum} \hfill\makebox[5cm][l]{Unterschrift}
 
 \end{document}
