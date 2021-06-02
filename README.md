@@ -8,10 +8,8 @@ LaTeX-Distribution
 
 Falls du noch keine bevorzugte Distribution hast, die du für deine vorwissenschaftliche Arbeit verwenden willst, will ich dir [TinyTeX](https://yihui.org/tinytex/) dringlich empfehlen. TinyTex ist eine von TexLive abgeleitet Distribution, die auf einer Vielzahl von Betriebssystemen läuft und leicht zu installieren beziehungsweise zu betätigen ist. Allerdings, da diese Distribution so schlicht und klein ist, werden nach der Installation vermutlich einige Pakete fehlen, die für diese Vorlage notwendig sind. Diese können jedoch ganz einfach mit dem mitgelieferten LaTeX-Paketmanager tlmgr installiert werden:
 
-    TODO add packages
-
     tlmgr update --self
-    tlmgr install
+    tlmgr install biblatex biber csquotes caption grfext microtype nowidow collection-langgerman
 
 LaTeX-Compiler
 --------------
